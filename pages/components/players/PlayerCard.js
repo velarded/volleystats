@@ -7,7 +7,7 @@ export default function PlayerCard(props) {
   const positionsLabel = props.positions.join(' / ');
   return (
     <div className={styles.playerCard}>
-      <div>
+      <div className={styles.nameContainer}>
         <h2>{props.firstName}</h2>
         <h2>{props.lastName}</h2>
       </div>
