@@ -10,7 +10,7 @@
 
 .logoContainer {
   height: inherit;
-  background-color: maroon;
+  background-color: #820606;
   margin: 0;
   padding: 0;
 
@@ -46,7 +46,7 @@
 }
 
 .signInButton {
-  background-color: maroon;
+  background-color: #820606;
   padding: 0.8rem 1.6rem;
   box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
 }
@@ -60,7 +60,7 @@
 .signInButton:hover {
   cursor: pointer;
   background-color: white;
-  color: maroon;
+  color: #820606;
   box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.6);
   transition: all 0.3s;
 }
