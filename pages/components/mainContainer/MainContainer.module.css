@@ -8,6 +8,7 @@
   grid-template-columns: 10fr 90fr;
   justify-content: center;
   align-items: center;
+  background-color: #e5e5e5;
 }
 
 .footer {

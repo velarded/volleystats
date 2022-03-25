@@ -1,0 +1,16 @@
+.playersContainer {
+    align-self: normal;
+    display: grid;
+    gap: 1.6rem;
+    grid-template-rows: 10fr 90fr;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.playersTitle {
+    margin: 0;
+    grid-column: 1 / 4;
+    align-self: center;
+    padding: 0 2.4rem;
+    font-size: 5.4rem;
+    font-weight: 600;
+}
