@@ -1,0 +1,37 @@
+.playerCard {
+    justify-self: center;
+    width: 30rem;
+    height: 15rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 5px 5px #ededf6;
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: 90fr 10fr;
+    grid-template-rows: 70fr 30fr;
+
+    transition: all ease-in 0.2s;
+}
+
+.playerCard:hover {
+    transform: scale(105%);
+}
+
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.nameContainer h2 {
+    font-size: 2.4rem;
+}
+
+.playerMenuIcon, .statsIcon{
+    justify-self: center;
+}
+
+.positionsText {
+    font-weight: 500;
+    color: #a6acbe;
+}
