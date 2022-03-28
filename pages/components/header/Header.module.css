@@ -68,6 +68,18 @@
 .signInButton:active {
 }
 
+.logoutIcon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.logoutIcon:hover {
+  cursor: pointer;
+  color: #820606;
+  box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.6);
+  transition: all 0.3s;
+}
+
 .displayPic {
   width: 48px;
   height: 48px;

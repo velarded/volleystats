@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { login, logout } from "../../../src/store/auth-actions";
 import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header(props) {
   const dispatch = useDispatch();
@@ -28,6 +30,8 @@ export default function Header(props) {
     router.push("/");
   };
 
+  const signInButton = <a className={styles.signInButton} onClick={signInHandler}>Sign In</a>;
+
   return (
     <header>
       <nav className={styles.navContainer}>
@@ -41,16 +45,16 @@ export default function Header(props) {
             <li className={`${styles.navListItem} ${styles.currentUserInfo}`}>
               <span>{currentUserName}</span>
               <img className={styles.displayPic} src={currentUserPhotoUrl} />
-              <span class={styles.headerDivider}></span>
+              <span className={styles.headerDivider}></span>
             </li>
           )}
           <li className={styles.navListItem}>
-            <a
-              className={styles.signInButton}
-              onClick={currentUserName === "" ? signInHandler : logoutHandler}
-            >
-              {currentUserName === "" ? "Sign in" : "Logout"}
-            </a>
+            {currentUserName === "" && signInButton}
+            {currentUserName !== "" && <FontAwesomeIcon
+          className={styles.logoutIcon}
+          icon={faRightFromBracket}
+          onClick={logoutHandler}
+        />}
           </li>
         </ul>
       </nav>
