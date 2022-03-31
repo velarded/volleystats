@@ -1,16 +1,15 @@
 import styles from "./Players.module.css";
 import PlayerCard from "./PlayerCard";
 import PlayersFilter from "./PlayersFilter";
-import useHttp from "../hooks/use-http";
-import { getPlayers } from "../../api/api";
+import { useEffect } from "react";
 
 export default function Players(props) {
-  const {
-    sendRequest,
-    status,
-    data: loadedPlayers,
-    error,
-  } = useHttp(getPlayers, true);
+  const playersListElement = [];
+
+  useEffect(() => {
+    console.log('players component');
+
+  }, []);
   const playersList = [
     { firstName: "Tobio", lastName: "Kageyama", positions: ["S"] },
     { firstName: "Daichi", lastName: "Sawamura", positions: ["C", "WS", "OH"] },
@@ -23,7 +22,6 @@ export default function Players(props) {
     { firstName: "Tadashi", lastName: "Yamaguchi", positions: ["MB", "PS"] },
   ];
 
-  const playersListElement = [];
   playersList.forEach((player) => {
     playersListElement.push(
       <PlayerCard
