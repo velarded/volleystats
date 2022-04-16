@@ -1,10 +1,14 @@
 import Card from '../shared/card/Card';
 import styles from './TeamCard.module.css';
+import {useRouter} from 'next/router';
 
 export default function TeamCard(props) {
+    const router = useRouter()
     const team = props.team;
+
     const cardOnClick= () => {
         console.log('team card clicked', team.teamName);
+        router.push('/teams/' + team.id);
     };
 
     return (
