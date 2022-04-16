@@ -17,8 +17,20 @@
 
 .playersListContainer {
     grid-column: 1 / -1;
+    grid-row: 2 / -1;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: max-content;
+    grid-template-rows: max-content; 
     gap: 2.4rem;
+}
+
+@media (max-width: 1180px) {
+    .playersListContainer {
+        grid-column: 1 / -1;
+        grid-row: 2 / -1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: max-content; 
+        gap: 2.4rem;
+    }
 }

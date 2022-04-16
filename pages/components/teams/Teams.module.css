@@ -1,0 +1,25 @@
+.teamsContainer {
+    align-self: normal;
+    display: grid;
+    gap: 1.6rem;
+    grid-template-rows: 10fr 90fr;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+}
+
+.teamsTitle {
+    margin: 0;
+    align-self: center;
+    padding: 0 2.4rem;
+    font-size: 5.4rem;
+    font-weight: 600;
+}
+
+.teamsListContainer {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: max-content; 
+    gap: 2.4rem;
+}

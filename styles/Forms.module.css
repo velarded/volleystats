@@ -1,0 +1,43 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formFooter {
+    display: flex;
+    justify-content: right;
+    padding-top: 3rem;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-top: 1.6rem;
+}
+
+.inputField {
+    padding: 0.8rem;    outline: red !important;
+
+    /* transition: all 0.3s ease-in; */
+}
+
+.inputField:focus {
+    outline: red !important;
+    /* border: solid 1px black; */
+}
+
+.createBtn {
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    letter-spacing: 0.1rem;
+    background-color: rgba(0, 0, 0);
+    color: #fff;
+}
+
+.createBtn:hover {
+    cursor: pointer;
+    transform: scale(105%);
+    transition: all 0.3s;
+}
