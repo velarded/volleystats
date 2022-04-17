@@ -4,8 +4,9 @@ import { faChartColumn, faEllipsisVertical } from '@fortawesome/free-solid-svg-i
 import Card from '../shared/card/Card';
 
 export default function PlayerCard(props) {
-  console.log(props.positions);
-  const positionsLabel = props.positions.join(' / ');
+  const positions = props.positions ? props.positions : [];
+  const positionsLabel = positions.join(' / ');
+
   return (
     <Card>
       <div className={styles.nameContainer}>

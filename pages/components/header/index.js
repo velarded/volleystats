@@ -38,7 +38,7 @@ export default function Header(props) {
     <header>
       <nav className={styles.navContainer}>
         <p className={styles.logoContainer}>
-          <Link className={styles.logo} href="/#">
+          <Link className={styles.logo} href="/">
             VS
           </Link>
         </p>
