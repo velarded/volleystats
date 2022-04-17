@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import firebaseConfig from "../../../src/config/firebase.config";
+import Link from "next/link";
 
 export default function Header(props) {
   const dispatch = useDispatch();
@@ -37,9 +38,9 @@ export default function Header(props) {
     <header>
       <nav className={styles.navContainer}>
         <p className={styles.logoContainer}>
-          <a className={styles.logo} href="/#">
+          <Link className={styles.logo} href="/#">
             VS
-          </a>
+          </Link>
         </p>
         <ul className={styles.navList}>
           {currentUserName !== "" && (
