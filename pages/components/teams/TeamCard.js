@@ -5,12 +5,11 @@ import {useRouter} from 'next/router';
 export default function TeamCard(props) {
     const router = useRouter()
     const team = props.team;
-    const teamName = team ? team.name : "";
+    const teamName = team ? team.teamName : "";
     const id = team ? team.id : "";
     const numOfPlayers = team ? team.numOfPlayers : 0;
 
     const cardOnClick= () => {
-        console.log('team card clicked', teamName);
         router.push('/teams/' + id);
     };
 

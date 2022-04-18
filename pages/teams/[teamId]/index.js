@@ -1,5 +1,5 @@
 import MainContainer from "../../components/mainContainer";
-import TeamDetail from "../../components/teams/TeamDetail";
+import TeamDetail from "../../components/teams/team-details/TeamDetail";
 
 export default function TeamsDetailsPage(props) {
   return (

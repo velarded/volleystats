@@ -7,6 +7,6 @@ export default function TeamsFilter(props) {
       }
 
     return (
-        <Filter onAddBtnClick={newTeamBtnClickHandler} entityName="Team"/>
+        <Filter onAddBtnClick={newTeamBtnClickHandler} newBtnLabel="New Team"/>
     );
 };

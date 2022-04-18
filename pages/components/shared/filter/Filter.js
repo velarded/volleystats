@@ -20,7 +20,7 @@ export default function Filter(props) {
                 className={styles.addIcon}
                 icon={faPlus}
             />
-            <span>New {props.entityName}</span>
+            <span>{props.newBtnLabel}</span>
         </button>
     </div>
     );

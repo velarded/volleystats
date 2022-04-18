@@ -6,8 +6,8 @@ import { addNewPlayer } from "../../../lib/firestore/writes";
 import { getPlayers } from "../../../lib/firestore/reads";
 import { useSelector } from "react-redux";
 import Modal from "../shared/modal/Modal";
-import { faDisplay } from "@fortawesome/free-solid-svg-icons";
 import NewPlayerForm from "./NewPlayerForm";
+import mainStyles from '../../../styles/Main.module.css';
 
 export default function Players(props) {
   const playersListElement = [];
@@ -26,12 +26,9 @@ export default function Players(props) {
   }, [uid]);
 
   const newPlayerHandler = async(newPlayer) => {
-    console.log('newPlayer: ', newPlayer);
     setShowNewPlayerModal(false);
-    const newPlayerId = await addNewPlayer({...newPlayer, uid: uid});
-    console.log('new player response: ', newPlayerId);
-    
-    setPlayers([...players, newPlayer]);
+    const newPlayerId = await addNewPlayer({...newPlayer, uid: uid});    
+    setPlayers([...players, {newPlayer, id: newPlayerId}]);
   };
 
   players.forEach((player) => {
@@ -45,7 +42,7 @@ export default function Players(props) {
   });
   return (
     <div className={styles.playersContainer}>
-      <h1 className={styles.playersTitle}>Players</h1>
+      <h1 className={mainStyles['component-title']}>Players</h1>
       <PlayersFilter openModal={() => setShowNewPlayerModal(true)}/>
       <div className={styles.playersListContainer}>{playersListElement}</div>
       <Modal show={showNewPlayerModal}

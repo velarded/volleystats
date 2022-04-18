@@ -8,6 +8,6 @@ export default function PlayersFilter(props) {
     props.openModal();
   }
     return (
-      <Filter onAddBtnClick={newPlayerBtnClickHandler} entityName="Player"/>
+      <Filter onAddBtnClick={newPlayerBtnClickHandler} newBtnLabel="New Player"/>
     );
 };
