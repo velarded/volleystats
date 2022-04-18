@@ -3,7 +3,8 @@ import styles from './TeamPlayerCard.module.css';
 
 export default function TeamPlayerCard (props) {
     const teamPlayer = props.teamPlayer ? props.teamPlayer : {};
-    const positionsLabel = teamPlayer.positions.join(" / ");
+    const positions = teamPlayer.positions ? teamPlayer.positions : [];
+    const positionsLabel = positions.join(" / ");
 
     return (
         <Card>
