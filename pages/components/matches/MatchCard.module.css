@@ -1,0 +1,16 @@
+.matchMenuIcon {
+    justify-self: end;
+}
+
+.matchTealDetail {
+    display: flex;
+    flex-direction: column;
+}
+
+.matchDate {
+    align-self: flex-end;
+}
+
+.matchCard:hover {
+    cursor: pointer;
+}

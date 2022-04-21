@@ -1,0 +1,17 @@
+.formContainer {
+    justify-self: center;
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem
+}
+
+.flexCol {
+    display: flex;
+    flex-direction: column;
+}
+
+.matchNameField, .newMatchBtn {
+    justify-self: center;
+    grid-column: 1 / -1;
+}

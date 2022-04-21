@@ -1,0 +1,23 @@
+.card {
+    width: 35rem;
+    height: 40rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.playerName {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 0.5rem;
+}
+
+.playerName p {
+    font-size: 2.8rem;
+    margin: 0;
+}
+
+.lineDivider {
+    background-color: #000;
+}

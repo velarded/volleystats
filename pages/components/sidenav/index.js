@@ -4,7 +4,7 @@ import {
   faChartPie,
   faUserGroup,
   faCircleUser,
-  faClipboard,
+  faTrophy,
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
@@ -17,7 +17,7 @@ export default function Sidenav(props) {
     { name: "Dashboards", icon: faChartPie, hrefValue: "dashboards"},
     { name: "Teams", icon: faUserGroup, hrefValue: "teams"},
     { name: "Players", icon: faCircleUser, hrefValue: "players"},
-    { name: "Record Match", icon: faClipboard, hrefValue: "record-match"},
+    { name: "Matches", icon: faTrophy, hrefValue: "matches"},
     { name: "Settings", icon: faGear, hrefValue: "settings"},
   ];
 
@@ -38,7 +38,7 @@ export default function Sidenav(props) {
   sideNavItemProps.forEach((sideNavItemProp) => {
     const classNames = styles.sidenavItem;
     sideNavListItems.push(
-      <li className={styles.sideNavListItem}><a id={sideNavItemProp.hrefValue}
+      <li key={sideNavItemProp.hrefValue} className={styles.sideNavListItem}><a id={sideNavItemProp.hrefValue}
         className={styles.sideNavItemLink}
         href={sideNavItemProp.hrefValue}
         onClick={(e) => handleClick(e, sideNavItemProp.hrefValue)}

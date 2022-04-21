@@ -1,0 +1,54 @@
+.playerStat {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.statName {
+    font-size: 2.4rem;
+}
+
+.statControl {
+    display: flex;
+    gap: 2.4rem;
+    align-items: center;
+    justify-self: right;
+}
+
+.plusBtn, .minusBtn {
+    width: 3.2rem;
+    height: 3.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease-in 0.15s;
+    box-shadow: 0.3rem 0.3rem 0.5rem rgba(0,0,0, 0.1);
+}
+
+.plusBtn:hover, .minusBtn:hover {
+    transform: scale(105%);
+    cursor: pointer;
+    box-shadow: 0.3rem 0.3rem 0.5rem rgba(0,0,0, 0.15);
+}
+
+.plusBtn {
+    background-color: rgba(51, 214, 159, 0.5);
+}
+
+.minusBtn {
+    background-color: rgba(198, 36, 36, 0.5);
+}
+
+.statCount {
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.lineDivider {
+    height: 0.2rem;
+    background-color: black;
+    margin: 0.5rem 0;
+    grid-column: 1 / -1;
+}

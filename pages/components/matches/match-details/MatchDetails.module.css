@@ -1,0 +1,103 @@
+.matchDetailsContainer{
+    display: grid;
+    grid-template-columns: 22fr 22fr 0.5rem 22fr 22fr;
+    grid-template-rows: 20fr 80fr;
+    row-gap: 2rem;
+    column-gap: 2rem;
+    padding: 3rem;
+}
+
+.matchName {
+    grid-column: 1 / 2;
+    justify-self: left;
+    align-self: normal;
+}
+
+.btnContainer {
+    grid-column: 5 / -1;
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.resetBtn, .saveBtn {
+    width: 15rem;
+    height: 5rem;
+    border-radius: 0.5rem;
+    border: none;
+    transition: all ease-in 0.1s;
+    box-shadow: 0.3rem 0.3rem 0.5rem rgba(0,0,0, 0.1);
+}
+
+.resetBtn:hover, .saveBtn:hover {
+    cursor: pointer;
+    transform: scale(105%);
+    box-shadow: 0.3rem 0.3rem 0.5rem rgba(0,0,0, 0.15);
+}
+
+.resetBtn span, .saveBtn span {
+    font-weight: 600;
+}
+
+.resetBtn {
+    background-color: rgba(198, 36, 36, 0.5);
+}
+
+.saveBtn {
+    background-color: rgba(51, 214, 159, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+
+}
+
+.teamOnePlayers, .teamTwoPlayers {
+    display: grid;
+    row-gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.teamOnePlayers {
+    grid-column: 1 / 3;
+}
+
+.teamTwoPlayers {
+    grid-column: 4 / 6;
+}
+
+@media(max-width: 1700px) {
+    .matchDetailsContainer{
+        display: grid;
+        grid-template-columns: 22fr 22fr 0.5rem 22fr 22fr;
+        grid-template-rows: 5fr 5fr 80fr;
+        row-gap: 2rem;
+        column-gap: 2rem;
+        padding: 3rem;
+    }
+    
+    .teamOnePlayers, .teamTwoPlayers {
+        display: grid;
+        row-gap: 3rem;
+        grid-template-columns: 1fr;
+    }
+
+    .matchName {
+        grid-column: 1 / 5;
+        justify-self: left;
+        align-self: normal;
+    }
+
+    .btnContainer {
+        grid-column: 5 / -1;
+        grid-row: 1 / 2;
+        display: flex;
+        justify-content: right;
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 1.8rem;
+    }
+}

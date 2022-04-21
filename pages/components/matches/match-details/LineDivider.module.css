@@ -1,0 +1,4 @@
+.lineDivider {
+    background-color: black;
+    grid-column: 3 / 4;
+}

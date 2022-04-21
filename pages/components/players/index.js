@@ -27,8 +27,8 @@ export default function Players(props) {
 
   const newPlayerHandler = async(newPlayer) => {
     setShowNewPlayerModal(false);
-    const newPlayerId = await addNewPlayer({...newPlayer, uid: uid});    
-    setPlayers([...players, {newPlayer, id: newPlayerId}]);
+    const newPlayerId = await addNewPlayer({...newPlayer, uid: uid});
+    setPlayers([...players, {...newPlayer, id: newPlayerId}]);
   };
 
   players.forEach((player) => {

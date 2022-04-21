@@ -1,0 +1,28 @@
+.matchesContainer {
+    align-self: normal;
+    display: grid;
+    gap: 1.6rem;
+    grid-template-rows: 10fr 90fr;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+}
+
+.matchesListContainer {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: max-content; 
+    gap: 2.4rem;
+}
+
+@media (max-width: 1180px) {
+    .matchesListContainer {
+        grid-column: 1 / -1;
+        grid-row: 2 / -1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: max-content; 
+        gap: 2.4rem;
+    }
+}

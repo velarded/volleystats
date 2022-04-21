@@ -14,7 +14,7 @@ export default function TeamCard(props) {
     };
 
     return (
-        <Card onClick={cardOnClick}>
+        <Card key={id} onClick={cardOnClick} className={styles.teamCard}>
             <div className={styles.teamNameContainer}>
                 <h2>{teamName}</h2>
                 <p>{numOfPlayers} Players</p>

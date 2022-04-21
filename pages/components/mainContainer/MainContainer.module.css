@@ -5,7 +5,7 @@
 .main {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 10fr 90fr;
+  grid-template-columns: 15rem 90fr;
   /* justify-content: center;
   align-items: center; */
   background-color: #e5e5e5;
