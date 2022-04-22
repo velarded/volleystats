@@ -12,6 +12,6 @@
     grid-row: 2 / -1;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: max-content; 
+    grid-auto-rows: max-content;
     gap: 2.4rem;
 }
