@@ -1,5 +1,7 @@
 import { async } from "@firebase/util";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getUserById } from "../../lib/firestore/reads";
+import { addNewUser } from "../../lib/firestore/writes";
 import { auth } from "../config/firebase.config";
 import { currentUserActions } from "./currentUser-slice";
 
@@ -19,6 +21,7 @@ export const login = () => {
         photoUrl: response.user.photoURL,
       };
       console.log(payload);
+      await checkIfFirstTimeUser(payload.userId, payload.name);
       dispatch(currentUserActions.setCurrentUser(payload));
     } catch (error) {
       console.log("Error with login", error);
@@ -26,6 +29,15 @@ export const login = () => {
     }
   };
 };
+
+const checkIfFirstTimeUser = async(userId, displayName) => {
+  const userExistsInDb = await getUserById(userId);
+  console.log(userExistsInDb);
+  if (!userExistsInDb) {
+    console.log('First time user. adding record to DB')
+    await addNewUser(userId, displayName);
+  }
+}
 
 export const logout = () => {
   return async (dispatch) => {
