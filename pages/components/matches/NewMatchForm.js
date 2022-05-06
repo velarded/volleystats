@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { addNewMatch } from '../../../lib/firestore/writes';
-import { getTeams } from '../../../lib/firestore/reads';
+import { getAllTeamsForCurrentUser } from '../../../lib/firestore/reads';
 import formStyles from '../../../styles/Forms.module.css';
 import styles from './NewMatchForm.module.css'
 
@@ -19,7 +19,7 @@ export default function NewMatchForm(props) {
 
     useEffect(() => {
         async function fetchData() {
-            const teams = await getTeams(uid);
+            const teams = await getAllTeamsForCurrentUser(uid);
             setTeamOneOptions(teams);
             setTeamTwoOptions(teams);
             if (teams.length >= 2) {
@@ -67,8 +67,8 @@ export default function NewMatchForm(props) {
     const onSubmitHandler = async(event) => {
         event.preventDefault();
         if (teamOneSelected !== teamTwoSelected) {
-            const newMatchDetails = {matchName, matchDate, teamOneId: teamOneSelected, teamTwoId: teamTwoSelected, uid};
-            const newMatchId = await addNewMatch(newMatchDetails);
+            const newMatchDetails = {matchName, matchDate, teamOneId: teamOneSelected, teamTwoId: teamTwoSelected, pointsHistory: [{ teamOnePoints: 0, teamTwoPoints: 0 }]};
+            const newMatchId = await addNewMatch(uid, newMatchDetails);
             props.onFormClose({...newMatchDetails, id: newMatchId, teamOne: teamOneOptions.find(t => t.id = teamOneSelected), teamTwo: teamTwoOptions.find(t => t.id === teamTwoSelected)});
         }
     }

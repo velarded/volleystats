@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getPlayers, getPlayersByUIdAndTeamId } from "../../../../lib/firestore/reads";
+import { getAllPlayersForCurrentUser, getPlayersByIds, getTeamById } from "../../../../lib/firestore/reads";
 import styles from '../../../../styles/Forms.module.css';
 
 export default function AddPlayerToTeamForm(props) {
@@ -11,9 +11,11 @@ export default function AddPlayerToTeamForm(props) {
     
     useEffect(() => {
         async function fetchData() {
-            const currentTeamPlayers = await getPlayersByUIdAndTeamId(uid, teamId);
+            const team = await getTeamById(uid, teamId);
+            const currentTeamPlayers = await getPlayersByIds(uid, team.players);
+            console.log('currentTeamPlayers', currentTeamPlayers);
             const currentTeamPlayersIds = currentTeamPlayers.map(c => c.id);
-            const players = await getPlayers(uid);
+            const players = await getAllPlayersForCurrentUser(uid);
             const playerOptions = players.filter(p => !currentTeamPlayersIds.includes(p.id));
             setTeamPlayersOptions(playerOptions);
             if (playerOptions.length > 0) {

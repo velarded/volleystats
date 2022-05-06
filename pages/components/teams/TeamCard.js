@@ -7,7 +7,11 @@ export default function TeamCard(props) {
     const team = props.team;
     const teamName = team ? team.teamName : "";
     const id = team ? team.id : "";
-    const numOfPlayers = team ? team.numOfPlayers : 0;
+    let players = [];
+
+    if (team && team.players) {
+        players = team.players;
+    }
 
     const cardOnClick= () => {
         router.push('/teams/' + id);
@@ -17,7 +21,7 @@ export default function TeamCard(props) {
         <Card key={id} onClick={cardOnClick} className={styles.teamCard}>
             <div className={styles.teamNameContainer}>
                 <h2>{teamName}</h2>
-                <p>{numOfPlayers} Players</p>
+                <p>{players.length} Players</p>
             </div>
         </Card>
     );

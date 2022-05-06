@@ -3,12 +3,12 @@ import mainStyles from '../../../../styles/Main.module.css';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getPlayersByUIdAndTeamId, getTeamById, readPlayerTeamsMappingByUIdAndTeamId } from '../../../../lib/firestore/reads';
+import { getPlayersByIds, getTeamById } from '../../../../lib/firestore/reads';
 import TeamPlayerCard from './TeamPlayerCard';
 import TeamDetailFilter from './TeamDetailFilter';
 import AddPlayerToTeamForm from './AddPlayerToTeamForm';
 import Modal from '../../shared/modal/Modal';
-import { addNewTeamPlayer } from '../../../../lib/firestore/writes';
+import { updateTeam } from '../../../../lib/firestore/writes';
 
 export default function TeamDetail(props) {
     const router = useRouter(); // to grab teamId
@@ -27,7 +27,7 @@ export default function TeamDetail(props) {
             setTeam(teamData);
 
             // get players list
-            const teamPlayersData = await getPlayersByUIdAndTeamId(uid, teamId);
+            const teamPlayersData = await getPlayersByIds(uid, teamData.players);
             setTeamPlayers(teamPlayersData);
         };
         fetchData();
@@ -35,8 +35,12 @@ export default function TeamDetail(props) {
 
     const addPlayerToTeamHandler = async(newTeamPlayer) => {
         setShowAddPlayerModal(false);
-        const response = await addNewTeamPlayer({playerId: newTeamPlayer.id, teamId, uid});
+        const newPlayersList = [...team.players, newTeamPlayer.id];
+        await updateTeam(teamId, newTeamPlayer.id, uid);
         setTeamPlayers([...teamPlayers, newTeamPlayer]);
+        setTeam((prevState) => {
+            return {...prevState, players: newPlayersList};
+        });
 
     };
 

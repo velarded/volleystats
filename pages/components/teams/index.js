@@ -4,7 +4,7 @@ import mainStyles from '../../../styles/Main.module.css';
 
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getTeams } from '../../../lib/firestore/reads';
+import { getAllTeamsForCurrentUser, getTeams } from '../../../lib/firestore/reads';
 import TeamsFilter from './TeamsFilter';
 import Modal from '../shared/modal/Modal';
 import NewTeamForm from './NewTeamForm';
@@ -19,7 +19,7 @@ export default function Teams(props) {
 
   useEffect(() => {
     async function fetchData() {
-      const teamsList = await getTeams(uid);
+      const teamsList = await getAllTeamsForCurrentUser(uid);
       setTeams(teamsList);
     };
     fetchData();
@@ -27,14 +27,14 @@ export default function Teams(props) {
 
   const newTeamHandler = async(newTeam) => {
     setShowNewTeamModal(false);
-    const newTeamId = await addNewTeam({...newTeam, uid: uid});
-    const newTeamData = {...newTeam, numOfPlayers: 0, id: newTeamId, uid};
+    const newTeamId = await addNewTeam(newTeam, uid);
+    const newTeamData = {...newTeam, players: [], id: newTeamId, uid};
     console.log(newTeamData);
     setTeams([...teams, newTeamData]);
   };
 
   teams.forEach((team) => {
-    teamsListElement.push(<TeamCard team={team}/>);
+    teamsListElement.push(<TeamCard key={team.id} team={team}/>);
   });
 
   return (

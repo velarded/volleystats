@@ -2,7 +2,7 @@ import styles from '../../../styles/Forms.module.css';
 import { useState } from 'react';
 
 export default function NewTeamForm(props) {
-    const [newTeam, setNewTeam] = useState({teamName: ''});
+    const [newTeam, setNewTeam] = useState({teamName: '', players: []});
 
     const onInputChange = (event) => {
         const fieldName = event.target.name;

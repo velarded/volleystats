@@ -3,7 +3,7 @@ import PlayerCard from "./PlayerCard";
 import PlayersFilter from "./PlayersFilter";
 import { useEffect, useState } from "react";
 import { addNewPlayer } from "../../../lib/firestore/writes";
-import { getPlayers } from "../../../lib/firestore/reads";
+import { getAllPlayersForCurrentUser, getPlayers } from "../../../lib/firestore/reads";
 import { useSelector } from "react-redux";
 import Modal from "../shared/modal/Modal";
 import NewPlayerForm from "./NewPlayerForm";
@@ -18,7 +18,7 @@ export default function Players(props) {
   useEffect(() => {
     console.log('players component');
     async function fetchData() {
-      const playersList = await getPlayers(uid);
+      const playersList = await getAllPlayersForCurrentUser(uid);
       setPlayers(playersList);
       console.log('Players Component - Players: ', playersList);
     };
@@ -27,7 +27,7 @@ export default function Players(props) {
 
   const newPlayerHandler = async(newPlayer) => {
     setShowNewPlayerModal(false);
-    const newPlayerId = await addNewPlayer({...newPlayer, uid: uid});
+    const newPlayerId = await addNewPlayer(newPlayer, uid);
     setPlayers([...players, {...newPlayer, id: newPlayerId}]);
   };
 
