@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 export default function MatchCard(props) {
     const router = useRouter();
-    const matchDate = props.matchDate ? props.matchDate : new Date();
+    const matchDate = new Date();
     const matchDateYear = matchDate.getFullYear();
     const matchDateMonth = matchDate.getMonth() + 1 >= 10 ? matchDate.getMonth() + 1: "0" + (matchDate.getMonth() + 1);
     const matchDateDay = matchDate.getDate() >= 10 ? matchDate.getDate(): "0" + matchDate.getDate();
