@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import styles from './Scoreboard.module.css';
 
 export default function Scoreboard(props) {
-    const teamOne = props.teamOne;
-    const teamTwo = props.teamTwo;
+    const teamOne = props.teamOne ? props.teamOne : {};
+    const teamTwo = props.teamTwo ? props.teamTwo : {};
     const [pointsHistory, setPointsHistory] = useState([]);
     const [teamOnePoints, setTeamOnePoints] = useState(0);
     const [teamTwoPoints, setTeamTwoPoints] = useState(0);
