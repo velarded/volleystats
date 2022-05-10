@@ -12,6 +12,7 @@ import LineDivider from './LineDivider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { updateMatchPointsHistory } from '../../../../lib/firestore/writes';
+import PlayerStatTable from './PlayerStatTable';
 
 export default function MatchDetails(props) {
     const router = useRouter();    
@@ -62,21 +63,23 @@ export default function MatchDetails(props) {
             </div>
 
             <div className={styles.teamOnePlayers}>
+                <PlayerStatTable />
+                {/* <PlayerStatsCard />
                 <PlayerStatsCard />
                 <PlayerStatsCard />
                 <PlayerStatsCard />
                 <PlayerStatsCard />
-                <PlayerStatsCard />
-                <PlayerStatsCard />
+                <PlayerStatsCard /> */}
             </div>
             <LineDivider />
             <div className={styles.teamTwoPlayers}>
+                <PlayerStatTable />
+                {/* <PlayerStatsCard />
                 <PlayerStatsCard />
                 <PlayerStatsCard />
                 <PlayerStatsCard />
                 <PlayerStatsCard />
-                <PlayerStatsCard />
-                <PlayerStatsCard />
+                <PlayerStatsCard /> */}
             </div>
         </div>
     );
