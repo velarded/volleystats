@@ -67,7 +67,7 @@ export default function NewMatchForm(props) {
     const onSubmitHandler = async(event) => {
         event.preventDefault();
         if (teamOneSelected !== teamTwoSelected) {
-            const newMatchDetails = {matchName, matchDate, teamOneId: teamOneSelected, teamTwoId: teamTwoSelected, pointsHistory: [{ teamOnePoints: 0, teamTwoPoints: 0 }]};
+            const newMatchDetails = {matchName, matchDate, teamOneId: teamOneSelected, teamTwoId: teamTwoSelected, pointsHistory: [{ teamOnePoints: 0, teamTwoPoints: 0 }], matchStats: []};
             const newMatchId = await addNewMatch(uid, newMatchDetails);
             props.onFormClose({...newMatchDetails, id: newMatchId, teamOne: teamOneOptions.find(t => t.id = teamOneSelected), teamTwo: teamTwoOptions.find(t => t.id === teamTwoSelected)});
         }

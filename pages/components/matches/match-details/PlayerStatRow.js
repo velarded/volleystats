@@ -1,3 +1,5 @@
+import { faDeleteLeft, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import styles from './PlayerStatRow.module.css';
 
@@ -55,6 +57,9 @@ export default function PlayerStatRow(props) {
                 <select>
                     {qualityTypeOptions}
                 </select>
+            </td>
+            <td>
+                <FontAwesomeIcon icon={faTrash}/>
             </td>
         </tr>
     );

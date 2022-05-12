@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import mainStyles from '../../../../styles/Main.module.css';
 import styles from './MatchDetails.module.css';
 
-import { getMatchById, getTeamById } from '../../../../lib/firestore/reads';
+import { getMatchById, getTeamById, getPlayersByIds } from '../../../../lib/firestore/reads';
 import PlayerStatsCard from './player-stats/PlayerStatsCard';
 import Scoreboard from './Scoreboard';
 import LineDivider from './LineDivider';
@@ -20,6 +20,8 @@ export default function MatchDetails(props) {
     const [match, setMatch] = useState({pointsHistory: [{teamOnePoints: 0, teamTwoPoints: 0}]});
     const [teamOne, setTeamOne] = useState({});
     const [teamTwo, setTeamTwo] = useState({});
+    const [teamOnePlayers, setTeamOnePlayers] = useState([]);
+    const [teamTwoPlayers, setTeamTwoPlayers] = useState([]);
     const uid = useSelector((state) => state.currentUser.userId);
 
     useEffect(() => {
@@ -32,6 +34,12 @@ export default function MatchDetails(props) {
             setTeamOne(teamOne);
             const teamTwo = await getTeamById(uid, match.teamTwoId);
             setTeamTwo(teamTwo);
+            const teamOnePlayersData = await getPlayersByIds(uid, teamOne.players);
+            console.log(teamOnePlayersData);
+            setTeamOnePlayers(teamOnePlayersData);
+            const teamTwoPlayersData = await getPlayersByIds(uid, teamTwo.players);
+            setTeamTwoPlayers(teamTwoPlayersData);
+            console.log(teamTwoPlayersData);
         };
 
         fetchData();
@@ -63,7 +71,7 @@ export default function MatchDetails(props) {
             </div>
 
             <div className={styles.teamOnePlayers}>
-                <PlayerStatTable />
+                <PlayerStatTable players={teamOnePlayers} match={match}/>
                 {/* <PlayerStatsCard />
                 <PlayerStatsCard />
                 <PlayerStatsCard />
@@ -73,7 +81,7 @@ export default function MatchDetails(props) {
             </div>
             <LineDivider />
             <div className={styles.teamTwoPlayers}>
-                <PlayerStatTable />
+                <PlayerStatTable players={teamOnePlayers}/>
                 {/* <PlayerStatsCard />
                 <PlayerStatsCard />
                 <PlayerStatsCard />

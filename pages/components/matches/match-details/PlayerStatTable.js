@@ -11,18 +11,20 @@ const players = [
     { firstName: 'Katie', lastName: ' ' },
 ];
 export default function PlayerStatTable(props) {
-    const [playerStats, setPlayerStats] = useState([]);
-    const playerStatRows = [];
+    const match = props.match ? props.match : {};
+    const players = props.players ? props.players : [];
+    const statRows = [];
+    const [matchPlayerStats, setMatchPlayerStats] = useState([]);
 
     const addRowHandler = (event) => {
-        console.log('add new player stat row');
+        console.log('add new match player stat row');
         setPlayerStats((prevState) => {
-            return [...prevState, { playerId: '', contactType: '', qualityType: ''}];
+            return [...prevState, { matchId: match.id, teamId: '', playerId: '', contactType: '', qualityType: ''}];
         });
     };
 
-    playerStats.forEach(playerStat => {
-        playerStatRows.push(<PlayerStatRow playerStat={playerStat} players={players}/>);
+    matchPlayerStats.forEach(stat => {
+        statRows.push(<PlayerStatRow stat={stat} players={players}/>);
     });
 
     return (
@@ -32,17 +34,18 @@ export default function PlayerStatTable(props) {
                     <th>Player</th>
                     <th>Contact Type</th>
                     <th>Quality</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                {playerStatRows}
+                {statRows}
                 {/* <PlayerStatRow players={players} />
                 <PlayerStatRow players={players} />
                 <PlayerStatRow players={players} />
                 <PlayerStatRow players={players} />
                 <PlayerStatRow players={players} /> */}
                 <tr>
-                    <td colSpan="3">
+                    <td colSpan="4">
                         <div className={styles.newRowBtn}>
                             <button onClick={addRowHandler}>New Entry</button>
                         </div>
