@@ -9,6 +9,12 @@
 
 .playerMenuIcon, .statsIcon{
     justify-self: center;
+    cursor: pointer;
+    transition: all ease-in 0.15s;
+}
+
+.playerMenuIcon:hover, .statsIcon:hover{
+    color: rgba(51, 214, 160, 1);
 }
 
 .positionsText {
