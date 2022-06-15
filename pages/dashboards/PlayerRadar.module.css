@@ -1,3 +1,7 @@
+.playerRadarContainer {
+    display: flex;
+}
+
 .playerRadar {
-    width: 500px;
+    width: 100%;
 }

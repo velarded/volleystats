@@ -1,7 +1,6 @@
 .matchDetailsContainer{
     display: grid;
-    grid-template-columns: 1fr 0.5rem 1fr;
-    grid-template-rows: 5fr 5fr 90fr;
+    grid-template-rows: 5fr 95fr;
     row-gap: 2rem;
     column-gap: 2rem;
     padding: 3rem;

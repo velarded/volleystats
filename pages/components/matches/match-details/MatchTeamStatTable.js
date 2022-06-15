@@ -26,29 +26,30 @@ export const QUALITY_TYPES = [
 export default function MatchTeamStatTable(props) {
     const uid = useSelector((state) => state.currentUser.userId);
 
-    const match = props.match ? props.match : {};
+    const matchId = props.matchId ? props.matchId : "";
     const team = props.team ? props.team : {};
     const players = props.players ? props.players : [];
+    const stats = props.stats ? props.stats : [];
     const [teamMatchStats, setTeamMatchStats] = useState([]);
     const statRows = [];
 
     useEffect(() => {
+        setTeamMatchStats(stats);
+        console.log('table stats: ', stats);
         const fetchData = async() => {
             if(team.id) {
-                console.log('matchId: ', match.id, 'teamId: ', team.id);
+                console.log('matchId: ', matchId, 'teamId: ', team.id);
             }
         };
 
         fetchData();
-    }, [uid, match.id, team.id]);
+    }, [uid, matchId, team.id, stats]);
 
     const addRowHandler = async (event) => {
         console.log('add new match player stat row');
         console.log('match: ', props.match);
-        const newStat = { matchId: match.id, teamId: team.id, playerId: players[0] ? players[0].id : '', contactType: CONTACT_TYPES[0], qualityType: QUALITY_TYPES[0], insertTime: new Date()};
-        const statId = await addNewStat(uid, newStat);
-
-        setTeamMatchStats((prevState) => [...prevState, {...newStat, id: statId}]);
+        const newStat = { matchId: matchId, teamId: team.id, playerId: players[0] ? players[0].id : '', contactType: CONTACT_TYPES[0], qualityType: QUALITY_TYPES[0], insertTime: new Date()};
+        props.onMatchStatAdd(newStat);
     };
 
     const matchStatRowDeleteHandler = async(statId, index) => {
@@ -61,47 +62,44 @@ export default function MatchTeamStatTable(props) {
         });
     };
 
-    const matchStatRowUpdate = async (stat, index) => {
-        console.log(stat, index);
-        await updateStat(uid, stat.id, stat);
-        setTeamMatchStats((prevState) => {
-            prevState[index] = stat;
-            console.log('prevState after: ', prevState);
-            return [...prevState];
-        });
+    const rowUpdateHandler = (stat, index) => {
+        console.log('rowUpdateHandler()');
+        props.onMatchStatUpdate(stat, index);
     };
 
-    for(let i = 0; i < teamMatchStats.length; i++) {
-        const stat = teamMatchStats[i];
-        statRows.push(<MatchStatRow key={i} index={i} matchStatRow={stat} players={players} onRowUpdate={props.onMatchStatUpdate} onDelete={props.onMatchStatDelete}/>);
-    }
+    teamMatchStats.forEach(matchStat => {
+        statRows.push(<MatchStatRow key={matchStat.index} index={matchStat.index} matchStatRow={matchStat} players={players} onRowUpdate={rowUpdateHandler} onDelete={props.onMatchStatDelete}/>);
+    });
+
     return (
-        <table className={styles.table}>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Player</th>
-                    <th>Contact Type</th>
-                    <th>Quality</th>
-                    <th>Point</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {statRows}
-                {/* <PlayerStatRow players={players} />
-                <PlayerStatRow players={players} />
-                <PlayerStatRow players={players} />
-                <PlayerStatRow players={players} />
-                <PlayerStatRow players={players} /> */}
-                <tr>
-                    <td colSpan="4">
-                        <div className={styles.newRowBtn}>
-                            <button onClick={props.onMatchStatAdd}>New Entry</button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div className={styles.tableContainer}>
+            <table className={styles.table}>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Player</th>
+                        <th>Contact Type</th>
+                        <th>Quality</th>
+                        <th>Point</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {statRows}
+                    {/* <PlayerStatRow players={players} />
+                    <PlayerStatRow players={players} />
+                    <PlayerStatRow players={players} />
+                    <PlayerStatRow players={players} />
+                    <PlayerStatRow players={players} /> */}
+                    <tr>
+                        <td colSpan="6">
+                            <div className={styles.newRowBtn}>
+                                <button onClick={addRowHandler}>New Entry</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     );
 };

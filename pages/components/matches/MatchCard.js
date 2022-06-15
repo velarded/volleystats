@@ -16,6 +16,10 @@ export default function MatchCard(props) {
         router.push('/matches/' + props.id);
     };
 
+    const matchStatsClickHandler = () => {
+
+    };
+
     return (
         <Card onClick={onClickHandler} className={styles.matchCard}>
             <div className={styles.nameContainer}>
@@ -31,7 +35,11 @@ export default function MatchCard(props) {
                 <span className={styles.teamTwo}>{props.teamTwo}</span>
             </div>
             <div className={styles.matchDate}>
-                <span>{matchDateString}</span>
+            <FontAwesomeIcon
+                className={styles.statsIcon}
+                icon={faChartColumn}
+                onClick={matchStatsClickHandler}
+                />
             </div>
         </Card>
     )

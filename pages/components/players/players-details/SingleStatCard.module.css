@@ -1,0 +1,48 @@
+.singleStatsContainer {
+
+}
+
+.statCard {
+    height: 45%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.mainStat {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statIcon {
+    font-size: 4.8rem;
+    margin: 0;
+}
+
+.statMetric {
+    font-size: 4.8rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.statLabel {
+    width: 100%;
+    margin: 0;
+    text-align: right;
+    color: #AAA;
+    font-weight: 500;
+    font-size: 2rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.bottomLabel {
+    width: 100%;
+    margin: 0;
+    color: #AAA;
+    font-weight: 500;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}

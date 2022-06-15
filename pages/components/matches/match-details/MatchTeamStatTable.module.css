@@ -1,8 +1,19 @@
+.tableContainer {
+    overflow: auto;
+    height: 60vh;
+}
+
+.tableContainer thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(30, 30, 30, 1);
+    color: #eee;
+}
+
 .table {
     border-collapse: collapse;
     justify-self: center;
-    max-height: 100vh;
-    overflow-y: scroll;
 }
 
 .table th, .table td {
@@ -10,11 +21,6 @@
     height: 5rem;
     text-align: left;
     padding: 2rem;
-}
-
-.table thead {
-    background-color: rgba(30, 30, 30, 1);
-    color: #eee;
 }
 
 .table tbody tr:nth-of-type(even) {

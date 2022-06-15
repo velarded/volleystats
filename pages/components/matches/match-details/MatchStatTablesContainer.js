@@ -1,10 +1,11 @@
 import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getMatchStats, getPlayersByIds, getTeamById } from "../../../../lib/firestore/reads";
-import { addNewStat } from "../../../../lib/firestore/writes";
+import { addNewStat, deleteStat, updateStat } from "../../../../lib/firestore/writes";
 import LineDivider from "./LineDivider";
 import MatchTeamStatTable from "./MatchTeamStatTable";
 import Scoreboard from "./Scoreboard";
+import styles from './MatchStatTablesContainer.module.css'
 
 export default function MatchStatTablesContainer(props) {
     const [matchStats, setMatchStats] = useState([]);
@@ -49,42 +50,55 @@ export default function MatchStatTablesContainer(props) {
         });
     };
 
-    const matchStatUpdateHandler = async(updatedStat) => {
-        console.log('updating stat: ', updatedStat);
+    const matchStatUpdateHandler = async(updatedStat, index) => {
+        console.log('updating stat: ', updatedStat, index);
+        await updateStat(uid, updatedStat.id, updatedStat);
+        setMatchStats((prevState) => {
+            const updatedMatchStats = [...prevState];
+            updatedMatchStats[index] = {...updatedStat, index};
+            return updatedMatchStats;
+        });        
     };
     
     const matchStatDeleteHandler = async(deleteStatId) => {
         console.log('deleting statId: ', deleteStatId);
+        await deleteStat(uid, deleteStatId);
+        setMatchStats((prevState) => {
+            return prevState.filter(stat => stat.id !== deleteStatId);
+        });   
     };
 
-    matchStats.forEach(matchStat => {
+    for (let i = 0; i < matchStats.length; i++) {
+        const matchStat = matchStats[i];
         if (matchStat.teamId === teamOneId) {
-            teamOneStats.push(matchStat);
+            teamOneStats.push({...matchStat, index: i});
         } else if (matchStat.teamId === teamTwoId) {
-            teamTwoStats.push(matchStat);
+            teamTwoStats.push({...matchStat, index: i});
         }
-    });
+    }
 
     return (
-        <Fragment>
+        <div className={styles.container}>
             <Scoreboard matchStats={matchStats} teamOne={teamOne} teamTwo={teamTwo}/>
-            <MatchTeamStatTable
-                matchId={matchId} 
-                team={teamOne} 
-                players={teamOnePlayers}
-                stats={teamOneStats} 
-                onMatchStatUpdate={matchStatUpdateHandler} 
-                onMatchStatAdd={matchStatAddHandler}
-                onMatchStatDelete={matchStatDeleteHandler}/>
-            <LineDivider />
-            <MatchTeamStatTable
-                matchId={matchId}
-                team={teamTwo} 
-                players={teamOnePlayers}
-                stats={teamTwoStats} 
-                onMatchStatUpdate={matchStatUpdateHandler} 
-                onMatchStatAdd={matchStatAddHandler}
-                onMatchStatDelete={matchStatDeleteHandler}/>
-        </Fragment>
+            <div className={styles.tablesContainer}>
+                <MatchTeamStatTable
+                    matchId={matchId} 
+                    team={teamOne} 
+                    players={teamOnePlayers}
+                    stats={teamOneStats} 
+                    onMatchStatUpdate={matchStatUpdateHandler} 
+                    onMatchStatAdd={matchStatAddHandler}
+                    onMatchStatDelete={matchStatDeleteHandler}/>
+                <LineDivider />
+                <MatchTeamStatTable
+                    matchId={matchId}
+                    team={teamTwo} 
+                    players={teamTwoPlayers}
+                    stats={teamTwoStats} 
+                    onMatchStatUpdate={matchStatUpdateHandler} 
+                    onMatchStatAdd={matchStatAddHandler}
+                    onMatchStatDelete={matchStatDeleteHandler}/>
+            </div>
+        </div>
     );
 };

@@ -18,7 +18,6 @@ export default function MatchStatRow(props) {
     useEffect(() => {
         const matchStatRow = props.matchStatRow;
         if (matchStatRow) {
-            console.log('matchStatRow: ', matchStatRow);
             setMatchStatRow(matchStatRow);
             const player = players.find(p => p.id === matchStatRow.playerId);
             if (player)
@@ -38,12 +37,16 @@ export default function MatchStatRow(props) {
 
     const selectHandler = (event, field) => {
         console.log('option changed: ', event, field);
-        props.onRowUpdate({...stat, [field]: event.target.value}, index);
-        // stat = {...stat, [field]: event.target.value};
+        const updatedStat = {...stat, [field]: event.target.value};
+        delete updatedStat.index;
+        props.onRowUpdate(updatedStat, index);
     };
 
     const pointUpdateHandler = (event) => {
         console.log("point checkbox clicked: ", event.target.checked);
+        const updatedStat = {...stat, pointScored: event.target.checked};
+        delete updatedStat.index;
+        props.onRowUpdate(updatedStat, index);
     };
 
     const deleteHandler = (event) => {
