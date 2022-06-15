@@ -1,0 +1,14 @@
+.container {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-rows: 5fr 95fr;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    max-height: 80vh;
+}
+
+.tablesContainer {
+    display: grid;
+    grid-template-columns: 1fr 0.5rem 1fr;
+    column-gap: 2rem;
+}

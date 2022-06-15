@@ -107,8 +107,8 @@ export default function PointProgressionLineChart(props) {
     datasets: [{
           label: 'Team One',
           data: teamOneDataset,
-          borderColor: 'rgb(198, 36, 36)',
-          backgroundColor: 'rgba(198, 36, 36, 0.2)',
+          borderColor: 'rgba(198, 36, 36, 0.5)',
+          backgroundColor: 'rgba(198, 36, 36, 0.1)',
           fill: true,
           pointStyle: 'circle',
           radius: 0,
@@ -117,8 +117,8 @@ export default function PointProgressionLineChart(props) {
     {
           label: 'Team Two',
           data: teamTwoDataset,
-          borderColor: 'rgb(54, 62, 214)',
-          backgroundColor: 'rgba(54, 62, 214, 0.2)',
+          borderColor: 'rgba(54, 62, 214, 0.5)',
+          backgroundColor: 'rgba(54, 62, 214, 0.1)',
           fill: true,
           pointStyle: 'circle',
           radius: 0,
@@ -128,7 +128,6 @@ export default function PointProgressionLineChart(props) {
 
     return (
         <div>
-            <h1>Line Chart Example</h1>
             <div className={styles.lineContainer}>
               <Line options={options} data={data} />
             </div>
