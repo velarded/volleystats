@@ -1,0 +1,7 @@
+.chartCard {
+    justify-self: center;
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 5px 5px #ededf6;
+    padding: 1rem;
+}

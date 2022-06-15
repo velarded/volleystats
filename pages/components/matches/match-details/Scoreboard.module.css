@@ -1,8 +1,7 @@
 .scoreboard {
-    grid-column: 2 / 5;
-    /* background-color: rgb(148, 173, 195); */
-    display: flex;
-    justify-content: center;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
 }
 

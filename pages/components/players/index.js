@@ -34,6 +34,8 @@ export default function Players(props) {
   players.forEach((player) => {
     playersListElement.push(
       <PlayerCard
+        key={player.id}
+        id={player.id}
         firstName={player.firstName}
         lastName={player.lastName}
         positions={player.positions}

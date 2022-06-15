@@ -1,0 +1,22 @@
+.row {
+    border-bottom: 1px solid #dddddd;
+}
+
+.serveRow {
+    background-color: #820606 !important;
+    border-bottom: 1px solid #820606;
+}
+
+.receiveRow {
+    background-color: rgba(51, 214, 159, 0.5) !important;
+    border-bottom: 1px solid rgba(51, 214, 159, 0.5);
+}
+
+.deleteIcon {
+    transition: all ease-in 0.15s;
+}
+
+.deleteIcon:hover {
+    cursor: pointer;
+    transform: scale(110%);
+}

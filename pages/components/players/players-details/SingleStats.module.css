@@ -1,0 +1,9 @@
+.singleStatsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.statCard {
+    height: 15rem;
+}
