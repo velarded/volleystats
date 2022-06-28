@@ -1,0 +1,64 @@
+.highlightsContainer {
+  align-self: normal;
+  display: grid;
+  gap: 1.6rem;
+  grid-template-rows: 10fr 45fr 45fr;
+  padding: 3rem;
+}
+
+.highlightsNav {
+  align-items: center;
+}
+
+.highlightsNav ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: max-content;
+
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.listItemBreadCrumb {
+  grid-column: 1 / -1;
+}
+
+.breadcrumbNav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.playerTitle {
+  padding-right: 0;
+  font-size: 2.4rem;
+  transition: 0.15s;
+}
+
+.navArrow {
+  font-size: 2.4rem;
+}
+
+.playerName {
+  font-size: 2.4rem;
+  font-weight: 500;
+  transition: 0.15s;
+}
+
+.highlightTitle {
+  font-size: 4.6rem;
+  font-weight: 500;
+}
+
+.playerTitle:hover,
+.playerName:hover {
+  cursor: pointer;
+  color: #33d69f;
+}
+
+.filterListItem {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

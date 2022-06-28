@@ -1,0 +1,17 @@
+.clipCard {
+  width: 30rem;
+  height: 30rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 90fr 10fr;
+  cursor: pointer;
+}
+
+.cardContentContainer {
+}
+
+.cardImg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
