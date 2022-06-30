@@ -14,6 +14,7 @@ import PlayerHighlightCard from "./PlayerHighlightCard";
 import Modal from "../../shared/modal/Modal";
 import PlayerHighlightClip from "./PlayerHighlightClip";
 import PlayerHighlightsFilter from "./PlayerHighlightsFilter";
+import NewPlayerHighlightForm from "./NewPlayerHighlightForm";
 
 const highlightTypes = {
   attacks: "Attack",
@@ -30,6 +31,8 @@ export default function PlayerHighlights(props) {
   const [player, setPlayer] = useState({});
   const [highlights, setHighlights] = useState([]);
   const [showHighlightModal, setShowHighlightModal] = useState(false);
+  const [showNewPlayerHighlightModal, setShowNewPlayerHighlightModal] =
+    useState(false);
   const [selectedHighlightClip, setSelectedHighlightClip] = useState({
     clipTitle: "",
     clipId: "",
@@ -64,6 +67,12 @@ export default function PlayerHighlights(props) {
       setSelectedHighlightClip(selected);
       setShowHighlightModal(true);
     }
+  };
+
+  const newPlayerHighlightHandler = async (newPlayerHighlight) => {
+    setShowNewPlayerHighlightModal(false);
+    // const newPlayerId = await addNewPlayer(newPlayer, uid);
+    // setPlayers([...players, { ...newPlayer, id: newPlayerId }]);
   };
 
   highlights.forEach((highlight) => {
@@ -105,7 +114,9 @@ export default function PlayerHighlights(props) {
             </span>
           </li>
           <li className={styles.filterListItem}>
-            <PlayerHighlightsFilter />
+            <PlayerHighlightsFilter
+              openModal={() => setShowNewPlayerHighlightModal(true)}
+            />
           </li>
         </ul>
       </nav>
@@ -116,6 +127,13 @@ export default function PlayerHighlights(props) {
         title={selectedHighlightClip.clipTitle}
       >
         <PlayerHighlightClip embeddedUrl={selectedHighlightClip.embeddedUrl} />
+      </Modal>
+      <Modal
+        show={showNewPlayerHighlightModal}
+        onClose={() => setShowNewPlayerHighlightModal(false)}
+        title="Add Highlight"
+      >
+        <NewPlayerHighlightForm onFormClose={newPlayerHighlightHandler} />
       </Modal>
     </div>
   );
