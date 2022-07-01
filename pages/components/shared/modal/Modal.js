@@ -6,8 +6,8 @@ export default function Modal(props) {
     }
     
     return (
-        <div className={styles.modal} onClick={props.onClose}>
-            <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+        <div className={`${styles.modal} ${props.className}`} onClick={props.onClose}>
+            <div className={`${styles.modalContent} ${props.contentClass}`} onClick={e => e.stopPropagation()}>
                 <div className={styles.modalHeader}>
                     <h1 className={styles.modalTitle}>{props.title}</h1>
                 </div>

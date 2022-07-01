@@ -1,3 +1,5 @@
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import styles from "./NewPlayerHighlightForm.module.css";
 
@@ -12,7 +14,7 @@ export default function NewPlayerHighlightForm(props) {
     const fieldName = event.target.name;
     const fieldValueString = event.target.value;
     let fieldValue;
-    setNewPlayer((prevState) => {
+    setNewPlayerHighlight((prevState) => {
       fieldValue = fieldValueString;
       const state = { ...prevState, [fieldName]: fieldValue };
       return state;
@@ -36,11 +38,11 @@ export default function NewPlayerHighlightForm(props) {
         required
       />
 
-      <label className={styles.label}>Youtube Clip Emedded URL</label>
+      <label className={styles.label}>Youtube Clip Emedded URL <i title='Share Clip > Embed. Copy the value in "src"'><FontAwesomeIcon icon={faCircleInfo}/></i></label>
       <input
         className={styles.inputField}
         type="text"
-        placeholder=""
+        placeholder="https://www.youtube.com/embed/q5mg1rp6hG4?clip=UgkxDa3f9vwz4KTn7IE6GQHjru6mQjL_vcvU&amp;clipt=EJfWBhivywc"
         name="embeddedUrl"
         onChange={onInputChange}
         required

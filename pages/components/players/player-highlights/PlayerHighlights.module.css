@@ -62,3 +62,7 @@
   justify-content: flex-end;
   align-items: center;
 }
+
+.highlightModalContent {
+  align-items: center;
+}

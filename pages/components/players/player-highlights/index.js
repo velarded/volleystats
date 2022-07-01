@@ -15,6 +15,7 @@ import Modal from "../../shared/modal/Modal";
 import PlayerHighlightClip from "./PlayerHighlightClip";
 import PlayerHighlightsFilter from "./PlayerHighlightsFilter";
 import NewPlayerHighlightForm from "./NewPlayerHighlightForm";
+import { addNewPlayerHighlight } from "../../../../lib/firestore/writes";
 
 const highlightTypes = {
   attacks: "Attack",
@@ -71,8 +72,11 @@ export default function PlayerHighlights(props) {
 
   const newPlayerHighlightHandler = async (newPlayerHighlight) => {
     setShowNewPlayerHighlightModal(false);
-    // const newPlayerId = await addNewPlayer(newPlayer, uid);
-    // setPlayers([...players, { ...newPlayer, id: newPlayerId }]);
+    console.log(newPlayerHighlight);
+    const newPlayerHighlightData = {...newPlayerHighlight, highlightType, playerId};
+    console.log(newPlayerHighlightData);
+    const newPlayerHighlightId = await addNewPlayerHighlight(uid, newPlayerHighlightData);
+    setHighlights([...highlights, {...newPlayerHighlightData, id: newPlayerHighlightId}]);
   };
 
   highlights.forEach((highlight) => {
@@ -125,6 +129,7 @@ export default function PlayerHighlights(props) {
         show={showHighlightModal}
         onClose={() => setShowHighlightModal(false)}
         title={selectedHighlightClip.clipTitle}
+        contentClass={styles.highlightModalContent}
       >
         <PlayerHighlightClip embeddedUrl={selectedHighlightClip.embeddedUrl} />
       </Modal>

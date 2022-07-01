@@ -13,9 +13,8 @@ export default function PlayerHighlightClip(props) {
         height="100%"
         src={embeddedUrl}
         title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
+        frameBorder={0}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="true"
       ></iframe>
     </div>
   );
