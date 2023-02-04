@@ -1,4 +1,13 @@
 .heroContainer {
+  background-image: linear-gradient(to bottom, rgba(30, 30, 30, .99), rgba(30, 30, 30, 0.5)), url('../../../public/pexels-pavel-danilyuk-6203499.jpg');
+  background-size: cover;
   grid-column: 1 / -1;
-  margin: 0 auto;
+}
+.heroTitle {
+  font-weight: 700;
+  color: white;
+}
+
+.heroParagraph {
+  color: white;
 }

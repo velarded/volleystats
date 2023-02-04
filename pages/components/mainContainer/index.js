@@ -4,6 +4,7 @@ import Header from "../header";
 import Footer from "../footer";
 import Sidenav from "../sidenav";
 import HeroContainer from "../heroContainer";
+import FeaturesContainer from "../features";
 
 export default function MainContainer(props) {
   const currentUserName = useSelector((state) => state.currentUser.name);
@@ -15,7 +16,7 @@ export default function MainContainer(props) {
       <main className={styles.main}>
         {currentUserName && <Sidenav />}
         {currentUserName && children}
-        {!currentUserName && <HeroContainer />}
+        {!currentUserName && <><HeroContainer /><FeaturesContainer /></>}
       </main>
       <Footer />
     </div>
