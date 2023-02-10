@@ -11,9 +11,9 @@ export default function MainContainer(props) {
   const children = props.children;
 
   return (
-    <div className={styles.container}>
+    <div>
       <Header />
-      <main className={styles.main}>
+      <main className={`min-h-screen grid grid-cols-[15rem_90fr] bg-main-bg-color`}>
         {currentUserName && <Sidenav />}
         {currentUserName && children}
         {!currentUserName && <><HeroContainer /><FeaturesContainer /></>}
