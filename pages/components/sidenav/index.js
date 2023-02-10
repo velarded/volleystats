@@ -14,7 +14,7 @@ export default function Sidenav(props) {
   const router = useRouter();
   const [activePath, setActivePath] = useState('/');
   const sideNavItemProps = [
-    { name: "Dashboards", icon: faChartPie, hrefValue: "dashboards"},
+    // { name: "Dashboards", icon: faChartPie, hrefValue: "dashboards"},
     { name: "Teams", icon: faUserGroup, hrefValue: "teams"},
     { name: "Players", icon: faCircleUser, hrefValue: "players"},
     { name: "Matches", icon: faTrophy, hrefValue: "matches"},
@@ -38,13 +38,13 @@ export default function Sidenav(props) {
   sideNavItemProps.forEach((sideNavItemProp) => {
     const classNames = styles.sidenavItem;
     sideNavListItems.push(
-      <li key={sideNavItemProp.hrefValue} className={styles.sideNavListItem}><a id={sideNavItemProp.hrefValue}
-        className={styles.sideNavItemLink}
+      <li key={sideNavItemProp.hrefValue} className={`flex justify-center items-center`}><a id={sideNavItemProp.hrefValue}
+        className={`flex flex-col gap-[1.2rem] items-center justify-center transition-all duration-300 hover:text-[#33d69f]`}
         href={sideNavItemProp.hrefValue}
         onClick={(e) => handleClick(e, sideNavItemProp.hrefValue)}
       >
         <FontAwesomeIcon
-          className={styles.sidenavItemIcon}
+          className={`w-[3.2rem] h-[3.2rem]`}
           icon={sideNavItemProp.icon}
         />
         <span>{sideNavItemProp.name}</span>
@@ -52,8 +52,8 @@ export default function Sidenav(props) {
     );
   });
   return (
-    <nav className={styles.sidenavContainer}>
-      <ul className={styles.sideNavList}>{sideNavListItems}</ul>
+    <nav className={`min-h-full bg-sidenav text-white px-4 py-8`}>
+      <ul className={`list-none p-0 flex flex-col items-center justify-center gap-[1.6rem]`}>{sideNavListItems}</ul>
     </nav>
   );
 }
