@@ -6,6 +6,6 @@ export default function MatchFilter(props) {
     };
 
     return (
-        <Filter onAddBtnClick={newMatchBtnClickHandler} newBtnLabel="New Match"/>
+        <Filter onAddBtnClick={newMatchBtnClickHandler} newBtnLabel="New Match Set"/>
     )
 }

@@ -1,10 +1,10 @@
 import MainContainer from "../components/mainContainer";
-import Matches from "../components/matches";
+import MatchSets from "../components/match-sets";
 
-export default function MatchesPage(props) {
+export default function MatchSetsPage(props) {
     return (
         <MainContainer>
-            <Matches />
+            <MatchSets />
         </MainContainer>
     );
 }

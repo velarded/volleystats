@@ -1,4 +1,4 @@
-.matchesContainer {
+.matchSetsContainer {
     align-self: normal;
     display: grid;
     gap: 1.6rem;
@@ -7,7 +7,7 @@
     padding: 3rem;
 }
 
-.matchesListContainer {
+.matchSetsListContainer {
     grid-column: 1 / -1;
     grid-row: 2 / -1;
     display: grid;
@@ -17,7 +17,7 @@
 }
 
 @media (max-width: 1180px) {
-    .matchesListContainer {
+    .matchSetsListContainer {
         grid-column: 1 / -1;
         grid-row: 2 / -1;
         display: grid;

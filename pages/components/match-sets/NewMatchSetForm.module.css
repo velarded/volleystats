@@ -11,7 +11,7 @@
     flex-direction: column;
 }
 
-.matchNameField, .newMatchBtn {
+.matchSetNameField, .newMatchSetBtn {
     justify-self: center;
     grid-column: 1 / -1;
 }

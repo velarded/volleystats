@@ -2,6 +2,7 @@
   background-image: linear-gradient(to bottom, rgba(30, 30, 30, .99), rgba(30, 30, 30, 0.5)), url('../../../public/pexels-pavel-danilyuk-6203499.jpg');
   background-size: cover;
   grid-column: 1 / -1;
+  min-height: -webkit-fill-available;
 }
 
 .heroTitle {

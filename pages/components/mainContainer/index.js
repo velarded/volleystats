@@ -16,7 +16,8 @@ export default function MainContainer(props) {
       <main className={`min-h-screen grid grid-cols-[15rem_90fr] bg-main-bg-color`}>
         {currentUserName && <Sidenav />}
         {currentUserName && children}
-        {!currentUserName && <><HeroContainer /><FeaturesContainer /></>}
+        {!currentUserName && <HeroContainer />}
+        {/* {!currentUserName && <><HeroContainer /><FeaturesContainer /></>} */}
       </main>
       <Footer />
     </div>

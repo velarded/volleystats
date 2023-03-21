@@ -17,7 +17,7 @@ export default function Sidenav(props) {
     // { name: "Dashboards", icon: faChartPie, hrefValue: "dashboards"},
     { name: "Teams", icon: faUserGroup, hrefValue: "teams"},
     { name: "Players", icon: faCircleUser, hrefValue: "players"},
-    { name: "Matches", icon: faTrophy, hrefValue: "matches"},
+    { name: "Match Sets", icon: faTrophy, hrefValue: "match-sets"},
     { name: "Settings", icon: faGear, hrefValue: "settings"},
   ];
 

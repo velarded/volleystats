@@ -1,22 +1,17 @@
 import { faChartColumn, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Card from "../shared/card/Card";
-import styles from './MatchCard.module.css';
+import styles from './MatchSetCard.module.css';
 import { useRouter } from 'next/router';
 
 export default function MatchCard(props) {
     const router = useRouter();
-    const matchDate = new Date();
-    const matchDateYear = matchDate.getFullYear();
-    const matchDateMonth = matchDate.getMonth() + 1 >= 10 ? matchDate.getMonth() + 1: "0" + (matchDate.getMonth() + 1);
-    const matchDateDay = matchDate.getDate() >= 10 ? matchDate.getDate(): "0" + matchDate.getDate();
-    const matchDateString = matchDateYear + "/" + matchDateMonth + "/" + matchDateDay;
-    
+
     const onClickHandler = () => {
-        router.push('/matches/' + props.id);
+        router.push('/match-sets/' + props.id);
     };
 
-    const matchStatsClickHandler = () => {
+    const matchSetStatsClickHandler = () => {
 
     };
 
@@ -38,7 +33,7 @@ export default function MatchCard(props) {
             <FontAwesomeIcon
                 className={styles.statsIcon}
                 icon={faChartColumn}
-                onClick={matchStatsClickHandler}
+                onClick={matchSetStatsClickHandler}
                 />
             </div>
         </Card>
