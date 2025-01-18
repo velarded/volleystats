@@ -29,7 +29,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
-.volleystats-ff10d-firebase-adminsdk-gakie-167ddcbdcb.json
+volleystats-ff10d-firebase-adminsdk-gakie-167ddcbdcb.json
 
 # vercel
 .vercel
